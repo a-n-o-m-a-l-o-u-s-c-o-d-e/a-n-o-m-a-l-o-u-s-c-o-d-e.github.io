@@ -1361,3 +1361,328 @@ footer a:hover {
     }
 
 }
+
+/* =========================================================
+404 — ANOMALY DETECTED
+========================================================= */
+
+.error-page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.error-main {
+position: relative;
+flex: 1;
+min-height: 720px;
+display: flex;
+align-items: center;
+overflow: hidden;
+}
+
+.error-grid {
+position: absolute;
+inset: 0;
+pointer-events: none;
+
+
+background-image:
+    linear-gradient(
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+    );
+
+background-size: 64px 64px;
+
+mask-image:
+    linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
+
+
+}
+
+.error-grid::after {
+content: "";
+position: absolute;
+width: 520px;
+height: 520px;
+top: 50%;
+left: 50%;
+
+
+transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+
+background:
+    radial-gradient(
+        circle,
+        rgba(81, 0, 255, 0.12),
+        transparent 65%
+    );
+
+pointer-events: none;
+
+
+}
+
+.error-content {
+position: relative;
+z-index: 2;
+
+
+width: min(
+    calc(100% - 48px),
+    var(--max-width)
+);
+
+margin: 0 auto;
+padding: 120px 0 100px;
+
+
+}
+
+.error-meta {
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+
+margin-bottom: 36px;
+
+color: var(--dim);
+
+font-size: 0.68rem;
+font-weight: 700;
+letter-spacing: 0.16em;
+
+
+}
+
+.error-code {
+margin-left: -12px;
+
+
+font-size: clamp(9rem, 24vw, 19rem);
+line-height: 0.75;
+font-weight: 900;
+letter-spacing: -0.09em;
+
+color: transparent;
+
+-webkit-text-stroke: 1px
+    rgba(255, 255, 255, 0.18);
+
+user-select: none;
+
+position: relative;
+
+
+}
+
+.error-code::after {
+content: "404";
+
+
+position: absolute;
+inset: 0;
+
+color: transparent;
+
+-webkit-text-stroke: 1px
+    rgba(0, 255, 247, 0.16);
+
+transform:
+    translate(7px, 4px);
+
+pointer-events: none;
+
+
+}
+
+.error-divider {
+width: 100%;
+height: 1px;
+
+
+margin: 54px 0 28px;
+
+background:
+    linear-gradient(
+        90deg,
+        var(--purple),
+        rgba(255, 255, 255, 0.08),
+        transparent
+    );
+
+
+}
+
+.error-eyebrow {
+margin: 0 0 18px;
+
+
+color: var(--cyan);
+
+font-size: 0.72rem;
+font-weight: 800;
+letter-spacing: 0.18em;
+
+
+}
+
+.error-content h1 {
+max-width: 760px;
+
+
+margin: 0;
+
+font-size: clamp(3rem, 7vw, 6.5rem);
+line-height: 0.94;
+letter-spacing: -0.055em;
+
+
+}
+
+.error-content h1 span {
+display: block;
+
+
+color: transparent;
+
+-webkit-text-stroke: 1px
+    rgba(255, 255, 255, 0.42);
+
+
+}
+
+.error-description {
+max-width: 480px;
+
+
+margin: 30px 0 34px;
+
+color: var(--muted);
+
+font-size: 1rem;
+line-height: 1.7;
+
+
+}
+
+.error-status {
+display: flex;
+align-items: center;
+gap: 10px;
+
+
+margin-top: 28px;
+
+color: var(--dim);
+
+font-size: 0.65rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+
+
+}
+
+.status-dot {
+width: 7px;
+height: 7px;
+
+
+border-radius: 50%;
+
+background: var(--purple);
+
+box-shadow:
+    0 0 0 4px rgba(81, 0, 255, 0.1);
+
+
+}
+
+.error-corner {
+position: absolute;
+right: 32px;
+bottom: 28px;
+
+
+color: var(--dim);
+
+font-size: 0.65rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+
+
+}
+
+/* 404 button */
+
+.error-content .button {
+display: inline-flex;
+align-items: center;
+gap: 18px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+
+.error-main {
+    min-height: 680px;
+}
+
+.error-content {
+    padding-top: 100px;
+    padding-bottom: 80px;
+}
+
+.error-meta {
+    gap: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.error-code {
+    margin-left: -5px;
+    font-size: clamp(7rem, 30vw, 12rem);
+}
+
+.error-divider {
+    margin-top: 42px;
+}
+
+.error-content h1 {
+    font-size: clamp(2.8rem, 13vw, 5rem);
+}
+
+.error-corner {
+    right: 20px;
+    bottom: 20px;
+}
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+
+.error-code::after {
+    transform: translate(4px, 3px);
+}
+
+
+}
