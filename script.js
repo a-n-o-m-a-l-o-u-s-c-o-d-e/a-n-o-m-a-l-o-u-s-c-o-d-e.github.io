@@ -1,15 +1,8 @@
 "use strict";
 
-
 const navbar = document.querySelector(".navbar");
 
-
-/*
- * Navigation glass effect.
- */
-
 function updateNavbar() {
-
     if (!navbar) {
         return;
     }
@@ -19,9 +12,7 @@ function updateNavbar() {
     } else {
         navbar.classList.remove("scrolled");
     }
-
 }
-
 
 window.addEventListener(
     "scroll",
@@ -29,65 +20,33 @@ window.addEventListener(
     { passive: true }
 );
 
-
 updateNavbar();
 
 
 /*
- * Slight mouse movement on the hero logo.
+ * SHŌGI ICHIBAN
+ *
+ * Type "shogi" anywhere on the site.
  */
 
-const hero = document.querySelector(".hero");
-const mark = document.querySelector(".hero-mark");
+let secretInput = "";
 
-const reducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    );
+document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey || event.altKey || event.metaKey) {
+        return;
+    }
 
+    if (event.key.length !== 1) {
+        return;
+    }
 
-if (
-    hero &&
-    mark &&
-    !reducedMotion.matches &&
-    window.matchMedia("(pointer: fine)").matches
-) {
+    secretInput += event.key.toLowerCase();
 
-    hero.addEventListener("pointermove", (event) => {
+    if (secretInput.length > 5) {
+        secretInput = secretInput.slice(-5);
+    }
 
-        const rect =
-            hero.getBoundingClientRect();
-
-        const x =
-            (event.clientX - rect.left) /
-            rect.width -
-            0.5;
-
-        const y =
-            (event.clientY - rect.top) /
-            rect.height -
-            0.5;
-
-        const rotate =
-            7 + x * 4;
-
-        const moveX =
-            x * 10;
-
-        const moveY =
-            y * 10;
-
-        mark.style.transform =
-            `translate(${moveX}px, calc(-50% + ${moveY}px)) rotate(${rotate}deg)`;
-
-    });
-
-
-    hero.addEventListener("pointerleave", () => {
-
-        mark.style.transform =
-            "translateY(-50%) rotate(7deg)";
-
-    });
-
-}
+    if (secretInput === "shogi") {
+        window.location.href = "shogi.html";
+    }
+});
